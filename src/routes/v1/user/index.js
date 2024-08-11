@@ -1,5 +1,10 @@
-const {createUserSignUpController , createUserSignInController} = require('../../../controller/userController');
-const { userSignUpValidator } = require('../../../validators/');
+const {
+    createUserSignUpController,
+    createUserSignInController
+} = require('../../../controller/userController');
+const {
+    userSignUpValidator
+} = require('../../../validators/');
 
 const express = require('express');
 const userRouter = express.Router();

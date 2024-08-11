@@ -3,5 +3,6 @@ dotenv.config();
 module.exports = {
     PORT: process.env.PORT,
     HASH_SALT: parseInt(process.env.HASH_SALT),
-    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY
+    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+    JWT_EXPIRY_TIME: '10m'
 };

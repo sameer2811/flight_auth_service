@@ -1,8 +1,15 @@
 const express = require('express');
-const { PingController } = require('../../controller/index');
+
+const {
+    PingController
+} = require('../../controller/index');
+
+const {
+    checkIsUserAuthenticated
+} = require('../../validators/userAuthentication');
 
 const pingRouter = express.Router();
 
-pingRouter.get('/', PingController);
+pingRouter.get('/', checkIsUserAuthenticated, PingController);
 
 module.exports = pingRouter;

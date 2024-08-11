@@ -38,7 +38,7 @@ class UserRepository extends CrudRepository {
             if (!isPasswordMatched) {
                 throw new AppError(StatusCodes.NOT_FOUND, "Password is not correct with this email id");
             }
-
+            // generate the web token and assing it back to the user.
             const jsonToken = generateJsonWebToken(data);
             return jsonToken;
         } catch (error) {
