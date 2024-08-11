@@ -1,3 +1,3 @@
 module.exports = {
-    userSignUpValidator: require("./userSignUpValidator")
+    userSignUpValidator: require("./userSignUpValidator"),
 };

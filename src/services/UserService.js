@@ -15,7 +15,7 @@ class UserService {
 
     async signInUser(data) {
         try {
-            const response = await this.repository.create(data);
+            const response = await this.repository.signInUser(data);
             return response;
         } catch (error) {
             throw error;

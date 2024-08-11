@@ -24,4 +24,22 @@ async function createUserSignUpController(req, res, next) {
     }
 }
 
-module.exports = createUserSignUpController;
+async function createUserSignInController(req, res, next) {
+    try {
+        let data = {
+            ...req.body
+        };
+        const response = await userService.signInUser(data);
+        console.log(response);
+        successResponse.data = response;
+        return res.status(StatusCodes.OK).json(successResponse);
+    } catch (error) {
+        errorResponse.error = error;
+        return res.status(error.status).json(errorResponse);
+    }
+}
+
+module.exports = {
+    createUserSignUpController,
+    createUserSignInController
+};
