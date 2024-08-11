@@ -1,8 +1,12 @@
-const { StatusCodes } = require("http-status-codes");
-const { UserService } = require("../services");
-const  UserRepository = require("../repositories/userRepository");
+const {
+    StatusCodes
+} = require("http-status-codes");
+const {
+    UserService
+} = require("../services");
+const UserRepository = require("../repositories/userRepository");
 const successResponse = require("../utils/common/successResponse");
-const   errorResponse = require("../utils/common/errorReponse");
+const errorResponse = require("../utils/common/errorReponse");
 
 
 const userService = new UserService(new UserRepository());

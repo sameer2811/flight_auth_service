@@ -1,3 +1,4 @@
+const serverConfig = require('../config/serverConfig');
 class UserService {
     constructor(repository) {
         this.repository = repository;
@@ -8,7 +9,7 @@ class UserService {
             const response = await this.repository.create(data);
             return response;
         } catch (error) {
-            return error;
+            throw error;
         }
     }
 
@@ -17,7 +18,7 @@ class UserService {
             const response = await this.repository.create(data);
             return response;
         } catch (error) {
-            return error;
+            throw error;
         }
     }
 }
