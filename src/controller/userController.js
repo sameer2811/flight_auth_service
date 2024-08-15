@@ -41,7 +41,23 @@ async function createUserSignInController(req, res, next) {
     }
 }
 
+async function assignUserRoleController(req, res, next) {
+    try {
+        let data = {
+            ...req.body
+        };
+        const response = await userService.assignRoleToUser(data);
+        console.log(response);
+        successResponse.data = response;
+        return res.status(StatusCodes.OK).json(successResponse);
+    } catch (error) {
+        errorResponse.error = error;
+        return res.status(error.status).json(errorResponse);
+    }
+}
+
 module.exports = {
     createUserSignUpController,
-    createUserSignInController
+    createUserSignInController,
+    assignUserRoleController
 };

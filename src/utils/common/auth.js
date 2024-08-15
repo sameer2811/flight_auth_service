@@ -29,7 +29,7 @@ function verifyJwtToken(token) {
         return jwt.verify(token, serverConfig.JWT_SECRET_KEY);
     } catch (error) {
         if (error instanceof BaseError) {
-            return error;
+            throw error;
         }
         throw new AppError(StatusCodes.BAD_REQUEST, error)
     }

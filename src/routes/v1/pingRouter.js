@@ -3,10 +3,10 @@ const express = require('express');
 const {
     PingController
 } = require('../../controller/index');
-
 const {
     checkIsUserAuthenticated
-} = require('../../validators/userAuthentication');
+} = require('../../validators/');
+
 
 const pingRouter = express.Router();
 

@@ -32,7 +32,7 @@ class RoleRepository extends CrudRepository {
             return role;
         } catch (error) {
             if (error instanceof BaseError) {
-                return error;
+                throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);
         }

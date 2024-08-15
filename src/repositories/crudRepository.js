@@ -22,11 +22,7 @@ class CrudRepository {
 
     async get(id) {
         try {
-            const response = await this.model.findByPk({
-                where: {
-                    id: id
-                }
-            });
+            const response = await this.model.findByPk(id);
             return response;
         } catch (error) {
             throw new AppError(StatusCodes.NOT_FOUND, error);
