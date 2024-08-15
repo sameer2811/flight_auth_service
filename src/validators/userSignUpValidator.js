@@ -4,7 +4,6 @@ const {
 const errorResponse = require("../utils/common/errorReponse");
 
 async function userSignUpValidator(req, res, next) {
-    console.log("Reaching here ", req.body);
     if (!req.body.email) {
         errorResponse.message = "please mention the email field.";
         return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);

@@ -4,10 +4,12 @@ const {
 const {
     UserService
 } = require("../services");
-const UserRepository = require("../repositories/userRepository");
+const {
+    UserRepository
+} = require("../repositories");
+
 const successResponse = require("../utils/common/successResponse");
 const errorResponse = require("../utils/common/errorReponse");
-
 
 const userService = new UserService(new UserRepository());
 async function createUserSignUpController(req, res, next) {
