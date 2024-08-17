@@ -7,9 +7,7 @@ const {
 const {
     StatusCodes
 } = require("http-status-codes");
-const {
-    BaseError
-} = require("sequelize");
+
 const CrudRepository = require("./crudRepository");
 
 class RoleRepository extends CrudRepository {
@@ -31,7 +29,7 @@ class RoleRepository extends CrudRepository {
             }
             return role;
         } catch (error) {
-            if (error instanceof BaseError) {
+            if (error instanceof Error) {
                 throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);

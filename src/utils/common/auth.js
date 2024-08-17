@@ -7,9 +7,6 @@ const {
 const {
     StatusCodes
 } = require('http-status-codes');
-const {
-    BaseError
-} = require('sequelize');
 
 function checkPassword(userPassWord, userEncryptedPassword) {
     return bcrypt.compareSync(userPassWord, userEncryptedPassword);
@@ -28,7 +25,7 @@ function verifyJwtToken(token) {
         }
         return jwt.verify(token, serverConfig.JWT_SECRET_KEY);
     } catch (error) {
-        if (error instanceof BaseError) {
+        if (error instanceof Error) {
             throw error;
         }
         throw new AppError(StatusCodes.BAD_REQUEST, error)

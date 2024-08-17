@@ -8,9 +8,6 @@ const {
     AppError
 } = require('../utils/errors');
 const {
-    BaseError
-} = require('sequelize');
-const {
     generateJsonWebToken,
     checkPassword
 } = require('../utils/common/auth');
@@ -37,7 +34,7 @@ class UserService {
             await user.addRole(role);
             return user;
         } catch (error) {
-            if (error instanceof BaseError) {
+            if (error instanceof Error) {
                 throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);
@@ -60,7 +57,7 @@ class UserService {
             const jsonToken = generateJsonWebToken(data);
             return jsonToken;
         } catch (error) {
-            if (error instanceof BaseError) {
+            if (error instanceof Error) {
                 throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);
@@ -82,7 +79,7 @@ class UserService {
             await user.addRole(role);
             return user;
         } catch (error) {
-            if (error instanceof BaseError) {
+            if (error instanceof Error) {
                 throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);
@@ -91,16 +88,10 @@ class UserService {
 
     async checkIsUserAdmin(id) {
         try {
-            console.log("Sameer singh 0.1");
-
             const user = await this.repository.get(id);
-            console.log("Sameer singh 0.2");
-
             if (!user) {
                 throw new AppError(StatusCodes.NOT_FOUND, "User is not found with this id");
             }
-            console.log("Sameer singh 0.3");
-
             const role = await roleRepository.getRoleByName({
                 roleName: USER_ROLE_ENUM.ADMIN
             });
@@ -110,7 +101,7 @@ class UserService {
             let hasRole = await user.hasRole(role);
             return hasRole;
         } catch (error) {
-            if (error instanceof BaseError) {
+            if (error instanceof Error) {
                 throw error;
             }
             throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, error);
